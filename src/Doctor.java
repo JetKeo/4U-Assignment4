@@ -13,6 +13,8 @@ public class Doctor {
      * @param theCol The column this Doctor starts at.
      */
     public Doctor(int theRow, int theCol) {
+        this.row = theRow;
+        this.col = theCol;
 
     }
 
@@ -28,7 +30,17 @@ public class Doctor {
      * @param newCol The column the player clicked on.
      */
     public void move(int newRow, int newCol) {
-
+        //if the click is in the same position as the current doctor position, stay
+        //if the click is one block away from the doctor, move there
+        if (newRow - getRow() <= 1 && newCol - getCol() <= 1
+         || newRow - getRow() <= -1 && newCol - getCol() <= -1) {
+            this.row = newRow;
+            this.col = newCol;
+            //else teleport to a random location
+        } else {
+            this.row = (int)(Math.random() * 12);
+            this.col = (int)(Math.random() * 12);
+        }
     }
 
     /**
@@ -37,7 +49,7 @@ public class Doctor {
      * @return This Doctor's row.
      */
     public int getRow() {
-
+        return this.row;
     }
 
     /**
@@ -46,7 +58,7 @@ public class Doctor {
      * @return This Doctor's column.
      */
     public int getCol() {
-
+        return this.col;
     }
 
 }
