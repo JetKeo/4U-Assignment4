@@ -72,7 +72,6 @@ public class CatchGame {
             if (one.hasCrashed() == false) {
                 b.removePeg(one.getRow(), one.getCol());
                 one.advanceTowards(doctor);
-                
             }
             if (two.hasCrashed() == false) {
                 b.removePeg(two.getRow(), two.getCol());
@@ -95,6 +94,7 @@ public class CatchGame {
         
    
             //DOCTOR CAUGHT DETECTION
+            //if the doctor is in the exact same position as a dalek subtract 1 from the lose integer and set the peg colour to yellow
             if(doctor.getRow() == one.getRow() && doctor.getCol() == two.getCol()){
                 b.putPeg(Color.yellow, doctor.getRow(), doctor.getCol());
                 b.putPeg(Color.yellow, one.getRow(), one.getCol());
@@ -111,11 +111,15 @@ public class CatchGame {
                 lose--;
             }
 
+            
             //DALEK CRASH DETECTION
+            // if two daleks are in the exact same postion take subtract 2 from the win int
             if (one.getRow() == two.getRow() && one.getCol() == two.getCol()) {
                 if(one.hasCrashed() == false || two.hasCrashed() == false){
                     win = win -2;
                     }
+                //set them both to a crashed state
+                //then set dalek colour to red
                 one.crash();
                 b.putPeg(Color.red, one.getRow(), one.getCol());
                 two.crash();              
