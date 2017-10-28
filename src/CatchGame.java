@@ -95,7 +95,7 @@ public class CatchGame {
    
             //DOCTOR CAUGHT DETECTION
             //if the doctor is in the exact same position as a dalek subtract 1 from the lose integer and set the peg colour to yellow
-            if(doctor.getRow() == one.getRow() && doctor.getCol() == two.getCol()){
+            if(doctor.getRow() == one.getRow() && doctor.getCol() == one.getCol()){
                 b.putPeg(Color.yellow, doctor.getRow(), doctor.getCol());
                 b.putPeg(Color.yellow, one.getRow(), one.getCol());
                 lose--;
